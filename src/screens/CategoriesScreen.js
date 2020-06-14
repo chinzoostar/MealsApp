@@ -10,23 +10,22 @@ import {
 
 import Label from '../components/Label';
 import {CATEGORIES} from '../data/dummy-data';
+import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
     return (
-      <TouchableOpacity
-        style={styles.gridItem}
-        onPress={() => {
+      <CategoryGridTile
+        categoryTitle={itemData.item.title}
+        color={itemData.item.color}
+        onSelect={() => {
           props.navigation.navigate('CategoryMealsScreen', {
             categoryId: itemData.item.id,
             categoryTitle: itemData.item.title,
             name: itemData.item.title,
           });
-        }}>
-        <View>
-          <Label>{itemData.item.title}</Label>
-        </View>
-      </TouchableOpacity>
+        }}
+      />
     );
   };
 
